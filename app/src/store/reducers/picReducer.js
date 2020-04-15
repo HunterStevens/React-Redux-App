@@ -4,7 +4,7 @@ const initialState = {
     image:'',
     isFetching:false,
     error:'',
-    title:''
+
 }
 
 export const picReducer = (state=initialState, action) => {
@@ -18,8 +18,7 @@ export const picReducer = (state=initialState, action) => {
             return {
                 ...state,
                 isFetching:false,
-                image: action.payload,
-                title:action.payload,
+                image: action.payload.config.url,
                 error:''
             }
         case 'FETCH_PIC_FAIL':

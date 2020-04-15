@@ -1,12 +1,19 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
+import {fetchPic} from '../store/actions/picActions';
+
 
 const Photo = props =>{
+    useEffect(() => {
+        props.fetchPic();
+    },[]);
+
+//style={{backgroundImage: `url('${props.image}')`}}
 
     return(
         <div className="MainPhotoBody">
-            <div {{backgroundImage: `url('${props.image}')`}}>
-                <h1>{props.title}</h1>
+            <div >
+            <img src={`${props.image}`}/>
                 <h3></h3>
             </div>
 
@@ -15,10 +22,16 @@ const Photo = props =>{
     )
 }
 
-mapStateToProps = state =>{
-    title:state.title
+const mapStateToProps = state =>{
+    console.log("mapStateToProps: ", state.picReducer)
+    return{
+    image:state.picReducer.image,
+    description:state.picReducer.image
+
+    }
 }
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    {fetchPic}
 )(Photo);
