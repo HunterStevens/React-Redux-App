@@ -17,6 +17,11 @@ const Photo = props =>{
         props.newPic(newPic);
     }
 
+    if(props.isFetching){
+        return<Loader/>
+    }
+
+
     return(
         <div className="MainPhotoBody">
             
@@ -34,7 +39,8 @@ const mapStateToProps = state =>{
     console.log("mapStateToProps: ", state.picReducer)
     return{
     image:state.picReducer.image,
-    description:state.picReducer.image
+    description:state.picReducer.image,
+    isFetching:state.picReducer.isFetching
 
     }
 }
