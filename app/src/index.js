@@ -4,11 +4,11 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import rootReducer from './store/reducers';
+import picReducer from './store/reducers';
 
 import App from './App';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(picReducer, applyMiddleware(thunk));
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
