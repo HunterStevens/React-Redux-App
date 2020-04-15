@@ -15,10 +15,10 @@ export const fetchPic = () =>{
     }
 }
 
-export const newPic = () => {
+export const newPic = (index) => {
     return dispatch=>{
         dispatch({type:'FETCH_PIC_START'});
-        axios.get("https://picsum.photos/400")
+        axios.get(`https://picsum.photos/id/${index}/400`)
         .then(res => {
             console.log("fetched image, ", res);
             dispatch({type:'FETCH_PIC_SUCCESS', payload:res})

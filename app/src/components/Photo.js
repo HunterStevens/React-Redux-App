@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {fetchPic} from '../store/actions/picActions';
+import {fetchPic, newPic} from '../store/actions/picActions';
+import Loader from 'react-loader-spinner'
 
 
 const Photo = props =>{
@@ -11,8 +12,9 @@ const Photo = props =>{
 //style={{backgroundImage: `url('${props.image}')`}}
 
     const randomImage = event =>{
-        
-        props.fetchPic();
+        let newPic =Math.floor(Math.random() * (1029-0)) +0;
+
+        props.newPic(newPic);
     }
 
     return(
@@ -20,7 +22,7 @@ const Photo = props =>{
             
             <img src={`${props.image}`}/><br/>
             <div className="buttonsPic">
-                <button onClick={event => randomImage(event)}>Fetch another Random Pic</button>
+                <button onClick={(event) => randomImage(event)}>Fetch another Random Pic</button>
             </div>
 
         </div>
@@ -39,5 +41,5 @@ const mapStateToProps = state =>{
 
 export default connect(
     mapStateToProps,
-    {fetchPic}
+    {fetchPic, newPic}
 )(Photo);
