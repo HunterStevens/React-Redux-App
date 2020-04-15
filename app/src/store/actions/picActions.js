@@ -3,7 +3,7 @@ import axios from 'axios';
 export const fetchPic = () =>{
     return dispatch =>{
         dispatch({type:'FETCH_PIC_START'});
-        axios.get("https://picsum.photos/300")
+        axios.get("https://picsum.photos/400")
         .then(res => {
             console.log("fetched image, ", res);
             dispatch({type:'FETCH_PIC_SUCCESS', payload:res})
@@ -12,7 +12,20 @@ export const fetchPic = () =>{
             console.log("Fetching Error: ", err);
             dispatch({type:'FETCH_PIC_FAIL', payload:`ERROR: ${err.response}`})
         })
+    }
+}
 
-
+export const newPic = () => {
+    return dispatch=>{
+        dispatch({type:'FETCH_PIC_START'});
+        axios.get("https://picsum.photos/400")
+        .then(res => {
+            console.log("fetched image, ", res);
+            dispatch({type:'FETCH_PIC_SUCCESS', payload:res})
+        })
+        .catch(err =>{
+            console.log("Fetching Error: ", err);
+            dispatch({type:'FETCH_PIC_FAIL', payload:`ERROR: ${err.response}`})
+        })
     }
 }

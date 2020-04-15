@@ -10,11 +10,17 @@ const Photo = props =>{
 
 //style={{backgroundImage: `url('${props.image}')`}}
 
+    const randomImage = event =>{
+        
+        props.fetchPic();
+    }
+
     return(
         <div className="MainPhotoBody">
-            <div >
-            <img src={`${props.image}`}/>
-                <h3></h3>
+            
+            <img src={`${props.image}`}/><br/>
+            <div className="buttonsPic">
+                <button onClick={event => randomImage(event)}>Fetch another Random Pic</button>
             </div>
 
         </div>
