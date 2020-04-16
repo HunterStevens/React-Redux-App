@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {fetchPic, newPic} from '../store/actions/picActions';
+import {fetchPic, newPic, grayscalePic, blurPic} from '../store/actions/picActions';
 import Loader from 'react-loader-spinner'
 
 
@@ -16,6 +16,17 @@ const Photo = props =>{
 
         props.newPic(newPic);
     }
+    const grayImage = event =>{
+        let newPic =Math.floor(Math.random() * (1029-0)) +0;
+
+        props.grayscalePic(newPic);
+    }
+    const blurImage = event =>{
+        let newPic =Math.floor(Math.random() * (1029-0)) +0;
+
+        props.blurPic(newPic);
+    }
+
 
     if(props.isFetching){
         return<Loader/>
@@ -25,9 +36,13 @@ const Photo = props =>{
     return(
         <div className="MainPhotoBody">
             
-            <img src={`${props.image}`}/><br/>
+            <img src={`${props.image}`}/>
+
             <div className="buttonsPic">
                 <button onClick={(event) => randomImage(event)}>Fetch another Random Pic</button>
+                <button onClick={(event) => grayImage(event)}>Fetch a Grayscale Pic</button>
+                <button onClick={(event) => blurImage(event)}>Fetch a blury Pic</button>
+
             </div>
 
         </div>
@@ -47,5 +62,5 @@ const mapStateToProps = state =>{
 
 export default connect(
     mapStateToProps,
-    {fetchPic, newPic}
+    {fetchPic, newPic, grayscalePic, blurPic}
 )(Photo);

@@ -4,7 +4,11 @@ body{
 img{
   align-items: center;
 }
-
+.MainPhotoBody{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .App {
   text-align: center;
   color:white;
